@@ -82,6 +82,7 @@ function eatGhost(ghost) {
  if (ghost.edible === false) {
    lives -= 1
    console.log('\nEeewwweww blop blop!');
+   gameOver(lives);
  }
 }
 
@@ -112,6 +113,13 @@ function processInput(key) {
   }
 }
 
+// Exit if out of lives
+function gameOver(lives) {
+  if (lives <= 0) {
+    process.exit()
+    console.log('\nGame Over!');
+  }
+}
 
 //
 // YOU PROBABLY DON'T WANT TO CHANGE CODE BELOW THIS LINE
