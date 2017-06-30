@@ -5,37 +5,38 @@ var lives = 2;
 
 // Define your ghosts here
 var inky = {
-  menu_option: '1',
-  name: 'Inky',
-  colour: 'Red',
-  character: 'Shadow',
-  edible: false
+  'menuOption': '1',
+  'name': 'Inky',
+  'colour': 'Red',
+  'character': 'Shadow',
+  'edible': false
 };
 
 var blinky = {
-  menu_option: '2',
-  name: 'Blinky',
-  colour: 'Cyan',
-  character: 'Speedy',
-  edible: false
+  'menuOption': '2',
+  'name': 'Blinky',
+  'colour': 'Cyan',
+  'character': 'Speedy',
+  'edible': false
 };
 
 var pinky = {
-  menu_option: '3',
-  name: 'Pinky',
-  colour: 'Pink',
-  character: 'Bashful',
-  edible: false
+  'menuOption': '3',
+  'name': 'Pinky',
+  'colour': 'Pink',
+  'character': 'Bashful',
+  'edible': false
 };
 
 var clyde = {
-  menu_option: '4',
-  name: 'Clyde',
-  colour: 'Orange',
-  character: 'Pokey',
-  edible: false
+  'menuOption': '4',
+  'name': 'Clyde',
+  'colour': 'Orange',
+  'character': 'Pokey',
+  'edible': false
 };
-// replace this comment with your four ghosts setup as objects
+
+var ghosts = [inky, blinky, pinky, clyde]
 
 
 // Draw the screen functionality
@@ -59,6 +60,9 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  for (i = 0; i < ghosts.length; i++) {
+    console.log('(' + ghosts[i].menuOption + ')' + ' Eat ' + ghosts[i].name);
+  }
   console.log('(q) Quit');
 }
 
@@ -74,6 +78,12 @@ function eatDot() {
   score += 10;
 }
 
+function eatGhost(ghost) {
+ if (ghost.edible === false) {
+   lives -= 1
+   console.log('\nEeewwweww blop blop!');
+ }
+}
 
 // Process Player's Input
 function processInput(key) {
@@ -84,6 +94,18 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhost(inky);
+      break;
+    case '2':
+      eatGhost(blinky);
+      break;
+    case '3':
+      eatGhost(pinky);
+      break;
+    case '4':
+      eatGhost(clyde);
       break;
     default:
       console.log('\nInvalid Command!');
