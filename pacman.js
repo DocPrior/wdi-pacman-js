@@ -88,6 +88,10 @@ function eatGhost(ghost) {
    lives -= 1
    console.log('\nEeewwweww blop blop!');
    gameOver(lives);
+ } else {
+   score += 200
+   console.log('\nChomp!');
+   ghost.edible = false;
  }
 }
 
