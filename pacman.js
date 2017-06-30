@@ -66,7 +66,11 @@ function displayMenu() {
   console.log('(d) Eat Dot');
   console.log('(p) Eat Power-Pellet');
   for (i = 0; i < ghosts.length; i++) {
-    console.log('(' + ghosts[i].menuOption + ')' + ' Eat ' + ghosts[i].name);
+    if (ghosts[i].edible === true) {
+        console.log('(' + ghosts[i].menuOption + ')' + ' Eat ' + ghosts[i].name + ' ' + ' (edible)');
+    } else {
+      console.log('(' + ghosts[i].menuOption + ')' + ' Eat ' + ghosts[i].name + ' ' + ' (inedible)');
+    }
   }
   console.log('(q) Quit');
 }
